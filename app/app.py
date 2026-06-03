@@ -8,9 +8,11 @@ st.write("Unlocking Lifetimes: Visualizing Progress in Longevity and Poverty Era
 
 @st.cache_data
 def load_data():
-    pop = pd.read_csv('app/sp_pop_totl.csv')
-    lex = pd.read_csv('app/lex.csv')
-    gni = pd.read_csv('app/gnicap_atm_con.csv')
+    import os
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    pop = pd.read_csv(os.path.join(BASE_DIR, 'sp_pop_totl.csv'))
+    lex = pd.read_csv(os.path.join(BASE_DIR, 'lex.csv'))
+    gni = pd.read_csv(os.path.join(BASE_DIR, 'gnicap_atm_con.csv'))
 
     def to_tidy(df, value_name):
         df = df.set_index(df.columns[0])
